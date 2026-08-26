@@ -7,7 +7,7 @@ import leadsRouter from "./routes/leads.js";
 
 const app = express();
 const PORT = process.env.PORT || 4000;
-const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || "http://localhost:5173";
+const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || "https://coruscating-frangipane-918c46.netlify.app/";
 
 app.use(helmet());
 app.use(
