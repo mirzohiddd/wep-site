@@ -88,7 +88,7 @@ const relationName = `relation-${props.source}`;
 
 const form = reactive({ name: "", phone: "", relation: "" });
 const errors = reactive({ name: "", phone: "", relation: "" });
-const status = ref("idle"); // idle | loading | success | error
+const status = ref("idle"); 
 const errorMessage = ref("");
 
 function validate() {

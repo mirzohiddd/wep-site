@@ -1,7 +1,3 @@
-// Optional: if TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID are set in .env,
-// every new lead is also pushed to a Telegram chat so the sales team
-// gets notified instantly. Safe no-op if not configured.
-
 const LINE = "━━━━━━━━━━━━━━━━━━";
 
 const SITE_NAME = process.env.TELEGRAM_SITE_NAME || "Halila";
