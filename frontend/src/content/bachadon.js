@@ -1,6 +1,12 @@
+import heroImage from "../assets/hero-bachadon.jpg";
+
 export default {
   slug: "bachadon",
   path: "/bachadon",
+  hero: {
+    src: heroImage,
+    alt: "Уй шароитида дастурхон атрофида суҳбатлашиб ўтирган икки аёл",
+  },
   documentTitle: "У ўзи учун эмас, фарзандлари учун ечим излади — Халила",
   metaDescription: "Бачадон саратони билан даволанаётган бемор ва унинг яқинлари учун батафсил мақола.",
   kicker: "Соғлиқ · Мақола",
