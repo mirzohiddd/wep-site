@@ -1,6 +1,6 @@
 <template>
   <section class="lead-form">
-    <h2>{{ t.heading }}</h2>
+    <h2>{{ heading }}</h2>
 
     <div v-if="status === 'success'">
       <p><strong>{{ t.successHeading }}</strong></p>
@@ -8,7 +8,7 @@
     </div>
 
     <div v-else>
-      <p>{{ t.intro }}</p>
+      <p>{{ intro }}</p>
 
       <form @submit.prevent="submitForm" novalidate>
         <div class="field">
@@ -27,7 +27,7 @@
           <legend>{{ t.relationLabel }}</legend>
           <div class="relation-options">
             <label
-              v-for="option in t.relations"
+              v-for="option in relationOptions"
               :key="option.key"
               class="relation-option"
               :class="{ 'is-selected': form.relation === option.key }"
@@ -59,7 +59,7 @@
         <p v-if="status === 'error'" class="error">{{ errorMessage }}</p>
 
         <button type="submit" :disabled="status === 'loading'">
-          {{ status === "loading" ? t.submitting : t.submit }}
+          {{ status === "loading" ? t.submitting : submitText }}
         </button>
       </form>
 
@@ -78,6 +78,13 @@ import { form as t, site } from "../content/common.js";
 
 const props = defineProps({
   source: { type: String, default: "halila-article" },
+  // Ixtiyoriy: sahifaga xos "kim uchun" variantlari va tugma matni.
+  // Berilmasa, common.js dagi umumiy qiymatlar ishlatiladi — boshqa
+  // sahifalar (masalan, umumiy/ishtaha landing) hech qanday o'zgarishni sezmaydi.
+  relations: { type: Array, default: null },
+  submitLabel: { type: String, default: null },
+  heading: { type: String, default: null },
+  intro: { type: String, default: null },
 });
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || "https://halila-backend.onrender.com";
@@ -85,6 +92,11 @@ const API_BASE = import.meta.env.VITE_API_BASE_URL || "https://halila-backend.on
 const nameId = `name-${props.source}`;
 const phoneId = `phone-${props.source}`;
 const relationName = `relation-${props.source}`;
+
+const relationOptions = props.relations || t.relations;
+const submitText = props.submitLabel || t.submit;
+const heading = props.heading || t.heading;
+const intro = props.intro || t.intro;
 
 const form = reactive({ name: "", phone: "", relation: "" });
 const errors = reactive({ name: "", phone: "", relation: "" });
